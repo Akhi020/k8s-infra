@@ -9,6 +9,8 @@ fi
 
 NS=nfs
 CHART_VERSION=v4.7.0
+NFS_SERVER="${NFS_SERVER:-}"
+NFS_SERVER_LOCATION="${NFS_SERVER_LOCATION:-}"
 
 echo Create $NS namespace
 kubectl create ns $NS
@@ -20,7 +22,6 @@ function installing_nfs() {
 
   if [ -z "$NFS_SERVER" ]; then
     read -p "Please provide NFS SERVER: " NFS_SERVER
-    read -p "Please provide NFS Path: " NFS_SERVER_LOCATION
 
     if [ -z "$NFS_SERVER" ]; then
       echo "NFS_SERVER \"$NFS_SERVER\" not provided; EXITING;";
